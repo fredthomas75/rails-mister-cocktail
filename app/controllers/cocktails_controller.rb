@@ -2,6 +2,11 @@ class CocktailsController < ApplicationController
 
   def index
     @cocktails = Cocktail.all
+    @search = params["search"]
+      if @search.present?
+        @name = @search["name"]
+        @cocktails = Cocktail.where("name ILIKE ?", "%#{@name}%")
+      end
   end
 
   def show
@@ -19,10 +24,6 @@ class CocktailsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def search
-    @cocktail = Cocktail.where(params[:query])
   end
 
   private

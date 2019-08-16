@@ -1,0 +1,4 @@
+<%= simple_form_for :search, url: cocktails_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+  <%= f.input :name, input_html: {value: ""}, inline_label: 'Name', label: false, class: "nav-link" %>
+  <%= f.submit "Search", class: "nav-link btn btn-outline-secondary" %>
+<% end %>
