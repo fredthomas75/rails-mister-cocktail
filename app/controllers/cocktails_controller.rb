@@ -21,6 +21,10 @@ class CocktailsController < ApplicationController
     end
   end
 
+  def search
+    @cocktail = Cocktail.where(params[:query])
+  end
+
   private
 
   def cocktail_params
